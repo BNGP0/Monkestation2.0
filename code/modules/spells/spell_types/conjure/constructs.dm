@@ -11,7 +11,7 @@
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
-	summon_radius = 0
+	range = 0 //monkestation edit
 	summon_type = list(/obj/structure/constructshell)
 
 /datum/action/cooldown/spell/conjure/construct/lesser // Used by artificers.

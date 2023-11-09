@@ -13,6 +13,6 @@
 	invocation = "NOT THE BEES"
 	invocation_type = INVOCATION_SHOUT
 
-	summon_radius = 3
+	range = 3 //monkestation edit
 	summon_type = list(/mob/living/basic/bee/toxin)
 	summon_amount = 9

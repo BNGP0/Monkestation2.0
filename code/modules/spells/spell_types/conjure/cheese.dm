@@ -12,6 +12,6 @@
 	invocation_type = INVOCATION_SHOUT
 	garbled_invocation_prob = 0 //i'd rather it remain like this
 
-	summon_radius = 1
+	range = 1//monkestation edit
 	summon_amount = 9
 	summon_type = list(/obj/item/food/cheese/wheel)

@@ -9,7 +9,7 @@
 	invocation = "CAVERE INSIDIAS"
 	invocation_type = INVOCATION_SHOUT
 
-	summon_radius = 3
+	range = 3 //monkestation edit
 	summon_type = list(
 		/obj/structure/trap/stun,
 		/obj/structure/trap/fire,

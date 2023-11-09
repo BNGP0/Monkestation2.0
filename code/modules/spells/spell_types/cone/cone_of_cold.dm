@@ -9,7 +9,7 @@
 	invocation = "ISAGE!" // What killed the dinosaurs? THE ICE AGE
 	invocation_type = INVOCATION_SHOUT
 
-	cone_levels = 4
+	range = 4 //monkestation edit
 	respect_density = TRUE
 	delay_between_level = 0.05 SECONDS
 

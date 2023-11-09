@@ -3,7 +3,8 @@
 	school = SCHOOL_CONJURATION
 
 	/// The radius around the caster the items will appear. 0 = spawns on top of the caster.
-	var/summon_radius = 7
+//	var/summon_radius = 7 //monkestation edit - replaced with "range" everywhere
+	range = 7
 	/// A list of types that will be created on summon.
 	/// The type is picked from this list, not all provided are guaranteed.
 	var/list/summon_type = list()
@@ -19,7 +20,7 @@
 /datum/action/cooldown/spell/conjure/cast(atom/cast_on)
 	. = ..()
 	var/list/to_summon_in = list()
-	for(var/turf/summon_turf in range(summon_radius, cast_on))
+	for(var/turf/summon_turf in range(range, cast_on))
 		if(summon_respects_density && summon_turf.density)
 			continue
 		to_summon_in += summon_turf

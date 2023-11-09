@@ -12,7 +12,7 @@
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
-	summon_radius = 0
+	range = 0//monkestation edit
 	summon_type = list(/turf/open/floor/engine/cult)
 
 /datum/action/cooldown/spell/conjure/cult_wall
@@ -29,5 +29,5 @@
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
-	summon_radius = 0
+	range = 0//monkestation edit
 	summon_type = list(/turf/closed/wall/mineral/cult/artificer) // We don't want artificer-based runed metal farms.

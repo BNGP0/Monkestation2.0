@@ -88,6 +88,16 @@
 	/// The amount of smoke to create on cast. This is a range, so a value of 5 will create enough smoke to cover everything within 5 steps.
 	var/smoke_amt = 0
 
+//monkestation edit
+	var/range = -1
+	var/cast_on_self = TRUE
+	var/cast_on_others = TRUE
+
+/datum/action/cooldown/spell/proc/adjust_range(amount = 0)
+	range += amount // replace range with another var used for spell type's range
+
+//monkestation edit end
+
 /datum/action/cooldown/spell/Grant(mob/grant_to)
 	// If our spell is mind-bound, we only wanna grant it to our mind
 	if(istype(target, /datum/mind))

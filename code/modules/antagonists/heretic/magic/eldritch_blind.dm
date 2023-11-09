@@ -8,4 +8,4 @@
 	invocation = "E'E'S"
 	spell_requirements = NONE
 
-	cast_range = 10
+	range = 10//monkestation edit

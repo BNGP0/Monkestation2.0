@@ -10,6 +10,6 @@
 	invocation_type = INVOCATION_SHOUT
 	spell_requirements = NONE
 
-	summon_radius = 1
+	range = 1//monkestation edit
 	summon_type = list(/obj/structure/spawner/nether)
 	summon_amount = 1

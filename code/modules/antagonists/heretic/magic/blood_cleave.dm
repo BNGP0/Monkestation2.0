@@ -14,7 +14,7 @@
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	cast_range = 4
+	range = 4//monkestation edit
 
 	/// The radius of the cleave effect
 	var/cleave_radius = 1

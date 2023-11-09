@@ -19,7 +19,7 @@
 	antimagic_flags = NONE
 	spell_max_level = 1
 
-	summon_radius = 0
+	range = 0//monkestation edit
 	summon_type = list(/obj/effect/forcefield/mime)
 	summon_lifespan = 30 SECONDS
 

@@ -11,7 +11,8 @@
 	/// The message displayed as the title of the tgui target input list.
 	var/choose_target_message = "Choose a target."
 	/// Radius around the caster that living targets are picked to choose from
-	var/target_radius = 7
+//	var/target_radius = 7 //monkestation edit- replaced with range
+	range = 7
 
 /datum/action/cooldown/spell/list_target/PreActivate(atom/caster)
 	var/list/list_targets = get_list_targets(caster, target_radius)
