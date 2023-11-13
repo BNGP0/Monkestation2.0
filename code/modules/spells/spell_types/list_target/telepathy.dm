@@ -26,7 +26,7 @@
 	if(QDELETED(src) || QDELETED(owner) || QDELETED(cast_on) || !can_cast_spell())
 		return . | SPELL_CANCEL_CAST
 
-	if(get_dist(cast_on, owner) > target_radius)
+	if(get_dist(cast_on, owner) > range)
 		owner.balloon_alert(owner, "they're too far!")
 		return . | SPELL_CANCEL_CAST
 

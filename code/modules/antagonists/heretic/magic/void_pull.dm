@@ -15,7 +15,7 @@
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	aoe_radius = 7
+	range = 7
 	/// The radius of the actual damage circle done before cast
 	var/damage_radius = 1
 	/// The radius of the stun applied to nearby people on cast
@@ -35,7 +35,7 @@
 
 /datum/action/cooldown/spell/aoe/void_pull/get_things_to_cast_on(atom/center, radius_override = 1)
 	var/list/things = list()
-	for(var/mob/living/nearby_mob in view(radius_override || aoe_radius, center))
+	for(var/mob/living/nearby_mob in view(radius_override || range, center))
 		if(nearby_mob == owner || nearby_mob == center)
 			continue
 		// Don't grab people who are tucked away or something

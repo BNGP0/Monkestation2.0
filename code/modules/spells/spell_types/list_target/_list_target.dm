@@ -15,7 +15,7 @@
 	range = 7
 
 /datum/action/cooldown/spell/list_target/PreActivate(atom/caster)
-	var/list/list_targets = get_list_targets(caster, target_radius)
+	var/list/list_targets = get_list_targets(caster, range)
 	if(!length(list_targets))
 		caster.balloon_alert(caster, "no targets nearby!")
 		return FALSE
@@ -24,16 +24,16 @@
 	if(QDELETED(src) || QDELETED(caster) || QDELETED(chosen) || !can_cast_spell())
 		return FALSE
 
-	if(get_dist(chosen, caster) > target_radius)
+	if(get_dist(chosen, caster) > range)
 		caster.balloon_alert(caster, "they're too far!")
 		return FALSE
 
 	return Activate(chosen)
 
 /// Get a list of living targets in radius of the center to put in the target list.
-/datum/action/cooldown/spell/list_target/proc/get_list_targets(atom/center, target_radius = 7)
+/datum/action/cooldown/spell/list_target/proc/get_list_targets(atom/center, range = 7)
 	var/list/things = list()
-	for(var/mob/living/nearby_living in view(target_radius, center))
+	for(var/mob/living/nearby_living in view(range, center))
 		if(nearby_living == owner || nearby_living == center)
 			continue
 

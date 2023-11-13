@@ -92,10 +92,8 @@
 	var/range = -1
 	var/cast_on_self = TRUE
 	var/cast_on_others = TRUE
-
-/datum/action/cooldown/spell/proc/adjust_range(amount = 0)
-	range += amount // replace range with another var used for spell type's range
-
+	var/deadcast = FALSE
+	var/list/enchants = list()
 //monkestation edit end
 
 /datum/action/cooldown/spell/Grant(mob/grant_to)
@@ -156,7 +154,7 @@
 
 	return Activate(target)
 
-/// Checks if the owner of the spell can currently cast it.
+/// Checks if the owner of the spell can currently cast it. ------ CHECKS IT NOT ONLY WHEN YOU TRY TO CAST IT, BUT SOMETIMES EVERY TIME YOU MOVE (probably to update the icon)
 /// Does not check anything involving potential targets.
 /datum/action/cooldown/spell/proc/can_cast_spell(feedback = TRUE)
 	if(!owner)
@@ -379,6 +377,12 @@
 
 	if(invocation_type == INVOCATION_NONE)
 		return TRUE
+
+// monkestation edit
+	if(!use_enchants(owner))
+		to_chat(owner, span_warning("Failed to cast the spell because of one of the enchants!"))
+		return FALSE
+// monkestation edit end
 
 	// If you want a spell usable by ghosts for some reason, it must be INVOCATION_NONE
 	if(!isliving(owner))

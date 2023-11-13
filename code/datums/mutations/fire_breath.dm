@@ -18,11 +18,11 @@
 		return
 
 	if(GET_MUTATION_POWER(src) <= 1) // we only care about power from here on
-		to_modify.cone_levels = initial(to_modify.cone_levels) //resets to default if no power chromosome
+		to_modify.range = initial(to_modify.range) //resets to default if no power chromosome
 		to_modify.self_throw_range = initial(to_modify.self_throw_range)
 		return
 
-	to_modify.cone_levels += 2  // Cone fwooshes further, and...
+	to_modify.range += 2  // Cone fwooshes further, and...
 	to_modify.self_throw_range += 1 // the breath throws the user back more
 
 /datum/action/cooldown/spell/cone/staggered/fire_breath
@@ -37,7 +37,7 @@
 	spell_requirements = NONE
 	antimagic_flags = NONE
 
-	cone_levels = 3
+	range = 3
 	respect_density = TRUE
 	/// The range our user is thrown backwards after casting the spell
 	var/self_throw_range = 1
@@ -54,7 +54,7 @@
 	if(!our_lizard.is_mouth_covered())
 		return
 
-	our_lizard.adjust_fire_stacks(cone_levels)
+	our_lizard.adjust_fire_stacks(range)
 	our_lizard.ignite_mob()
 	to_chat(our_lizard, span_warning("Something in front of your mouth catches fire!"))
 

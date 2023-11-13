@@ -8,7 +8,7 @@
 	cooldown_time = 2 MINUTES
 	spell_requirements = NONE
 
-	summon_radius = 0
+	range = 0
 	summon_type = list(/obj/structure/foamedmetal)
 
 /datum/action/cooldown/spell/conjure/foam_wall/can_cast_spell(feedback = TRUE)

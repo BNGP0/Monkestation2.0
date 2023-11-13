@@ -11,10 +11,10 @@
 	invocation = "AULIE OXIN FIERA"
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
-	aoe_radius = 3
+	range = 3
 
 /datum/action/cooldown/spell/aoe/knock/get_things_to_cast_on(atom/center)
-	return RANGE_TURFS(aoe_radius, center)
+	return RANGE_TURFS(range, center)
 
 /datum/action/cooldown/spell/aoe/knock/cast_on_thing_in_aoe(turf/victim, atom/caster)
 	SEND_SIGNAL(victim, COMSIG_ATOM_MAGICALLY_UNLOCKED, src, caster)

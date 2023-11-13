@@ -101,11 +101,11 @@
 	button_icon_state = "blackout"
 	cooldown_time = 30 SECONDS
 	spell_requirements = NONE
-	aoe_radius = 14
+	range = 14
 
 /datum/action/cooldown/spell/aoe/flicker_lights/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/obj/machinery/light/nearby_light in range(aoe_radius, center))
+	for(var/obj/machinery/light/nearby_light in range(range, center))
 		if(!nearby_light.on)
 			continue
 
@@ -123,7 +123,7 @@
 	button_icon_state = "blind"
 	cooldown_time = 1 MINUTES
 	spell_requirements = NONE
-	aoe_radius = 14
+	range = 14
 
 /datum/action/cooldown/spell/aoe/blindness/cast(atom/cast_on)
 	cast_on.visible_message(span_danger("[cast_on] glares their eyes."))
@@ -131,7 +131,7 @@
 
 /datum/action/cooldown/spell/aoe/blindness/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/mob/living/nearby_mob in range(aoe_radius, center))
+	for(var/mob/living/nearby_mob in range(range, center))
 		if(nearby_mob == owner || nearby_mob == center)
 			continue
 
