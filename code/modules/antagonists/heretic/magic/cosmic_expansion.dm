@@ -16,7 +16,7 @@
 	spell_requirements = NONE
 
 	summon_amount = 9
-	range = 1//monkestation edit
+	summon_radius = 1
 	summon_type = list(/obj/effect/forcefield/cosmic_field)
 	/// The range at which people will get marked with a star mark.
 	var/star_mark_range = 7

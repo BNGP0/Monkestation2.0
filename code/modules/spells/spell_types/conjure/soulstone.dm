@@ -12,7 +12,7 @@
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
-	range = 0//monkestation edit
+	summon_radius = 0
 	summon_type = list(/obj/item/soulstone)
 
 /datum/action/cooldown/spell/conjure/soulstone/cult

@@ -9,5 +9,5 @@
 	invocation = "NOUK FHUNMM SACP RISSKA"
 	invocation_type = INVOCATION_SHOUT
 
-	range = 1 //monkestation edit
+	summon_radius = 1
 	summon_type = list(/mob/living/basic/carp)

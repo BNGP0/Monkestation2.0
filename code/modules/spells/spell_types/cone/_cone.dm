@@ -5,15 +5,13 @@
  */
 /datum/action/cooldown/spell/cone
 	/// This controls how many levels the cone has. Increase this value to make a bigger cone.
-//	var/cone_levels = 3
-// monkestation edit - replaced all "cone_levels" with "range" in the file
-	range = 3
+	var/cone_levels = 3
 	/// This value determines if the cone penetrates walls.
 	var/respect_density = FALSE
 
 /datum/action/cooldown/spell/cone/cast(atom/cast_on)
 	. = ..()
-	var/list/cone_turfs = get_cone_turfs(get_turf(cast_on), cast_on.dir, range)
+	var/list/cone_turfs = get_cone_turfs(get_turf(cast_on), cast_on.dir, cone_levels)
 	SEND_SIGNAL(src, COMSIG_SPELL_CONE_ON_CAST, cone_turfs, cast_on)
 	make_cone(cone_turfs, cast_on)
 
@@ -51,7 +49,7 @@
 	return
 
 ///This proc creates a list of turfs that are hit by the cone.
-/datum/action/cooldown/spell/cone/proc/get_cone_turfs(turf/starter_turf, dir_to_use, range = 3)
+/datum/action/cooldown/spell/cone/proc/get_cone_turfs(turf/starter_turf, dir_to_use, cone_levels = 3)
 	var/list/turfs_to_return = list()
 	var/turf/turf_to_use = starter_turf
 	var/turf/left_turf
@@ -73,7 +71,7 @@
 			right_dir = NORTH
 
 	// Go though every level of the cone levels and generate the cone.
-	for(var/level in 1 to range)
+	for(var/level in 1 to cone_levels)
 		var/list/level_turfs = list()
 		// Our center turf always exists, it's straight ahead of the caster.
 		turf_to_use = get_step(turf_to_use, dir_to_use)
@@ -99,7 +97,7 @@
 		turfs_to_return += list(level_turfs)
 
 		// If we're at the last level, we're done
-		if(level == range)
+		if(level == cone_levels)
 			break
 		// But if we're not at the last level, we should check that we can keep going
 		if(respect_density && turf_to_use.density)

@@ -9,6 +9,6 @@
 	invocation = "HO HO HO"
 	invocation_type = INVOCATION_SHOUT
 
-	range = 3//monkestation edit
+	summon_radius = 3
 	summon_type = list(/obj/item/a_gift)
 	summon_amount = 5

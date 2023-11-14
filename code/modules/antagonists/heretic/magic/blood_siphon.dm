@@ -15,7 +15,7 @@
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	range = 6//monkestation edit
+	cast_range = 6
 
 /datum/action/cooldown/spell/pointed/blood_siphon/can_cast_spell(feedback = TRUE)
 	return ..() && isliving(owner)

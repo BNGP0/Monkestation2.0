@@ -3,7 +3,7 @@
 	name = "Dispense Wizard Justice"
 	desc = "This spell dispenses wizard justice."
 
-	range = 3//monkestation edit
+	summon_radius = 3
 	summon_type = list(/mob/living/simple_animal/bot/secbot/ed209)
 	summon_amount = 10
 

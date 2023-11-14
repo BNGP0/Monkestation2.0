@@ -10,7 +10,7 @@
 	/// Should we shuffle the targets lift after getting them via get_things_to_cast_on?
 	var/shuffle_targets_list = FALSE
 	/// The radius of the aoe.
-	var/aoe_radius = 7// monkestation edit: replaced aoe radius with range. everywhere. in the entire codebase
+	var/aoe_radius = 7
 
 // At this point, cast_on == owner. Either works.
 // Don't extend this for your spell! Look at cast_on_thing_in_aoe.

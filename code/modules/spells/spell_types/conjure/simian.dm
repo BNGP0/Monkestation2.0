@@ -13,7 +13,7 @@
 	invocation = "OOGA OOGA OOGA!!!!"
 	invocation_type = INVOCATION_SHOUT
 
-	range = 2//monkestation edit
+	summon_radius = 2
 	summon_type = list(/mob/living/carbon/human/species/monkey/angry, /mob/living/carbon/human/species/monkey/angry, /mob/living/simple_animal/hostile/gorilla/lesser)
 	summon_amount = 4
 

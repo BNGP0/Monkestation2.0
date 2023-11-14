@@ -10,6 +10,6 @@
 	invocation_type = INVOCATION_SHOUT
 	spell_requirements = NONE
 
-	range = 3//monkestation edit
+	summon_radius = 3
 	summon_type = list(/mob/living/basic/creature)
 	summon_amount = 10
