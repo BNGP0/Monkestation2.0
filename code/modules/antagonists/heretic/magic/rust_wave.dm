@@ -17,7 +17,7 @@
 	invocation_type = INVOCATION_WHISPER
 	spell_requirements = NONE
 
-	range = 5
+	cone_levels = 5
 	respect_density = TRUE
 
 /datum/action/cooldown/spell/cone/staggered/entropic_plume/cast(atom/cast_on)
@@ -39,7 +39,7 @@
 	if(current_level == 2)
 		return 3
 	// At the max level, we turn small again
-	if(current_level == range)
+	if(current_level == cone_levels)
 		return 3
 	// Otherwise, all levels in between will be wider
 	return 5

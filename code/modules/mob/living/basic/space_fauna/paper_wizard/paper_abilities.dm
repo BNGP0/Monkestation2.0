@@ -11,7 +11,7 @@
 		/mob/living/basic/stickman/ranged,
 		/mob/living/basic/stickman/dog,
 	)
-	range = 1
+	summon_radius = 1
 	summon_amount = 2
 	///How many minions we summoned
 	var/summoned_minions = 0

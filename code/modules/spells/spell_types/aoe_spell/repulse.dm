@@ -8,7 +8,7 @@
 
 /datum/action/cooldown/spell/aoe/repulse/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/atom/movable/nearby_movable in view(range, center))
+	for(var/atom/movable/nearby_movable in view(aoe_radius, center))
 		if(nearby_movable == owner || nearby_movable == center)
 			continue
 		if(nearby_movable.anchored)
@@ -55,7 +55,7 @@
 	school = SCHOOL_EVOCATION
 	invocation = "GITTAH WEIGH"
 	invocation_type = INVOCATION_SHOUT
-	range = 5
+	aoe_radius = 5
 
 	cooldown_time = 40 SECONDS
 	cooldown_reduction_per_rank = 6.25 SECONDS
@@ -76,7 +76,7 @@
 	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	invocation_type = INVOCATION_NONE
 	antimagic_flags = NONE
-	range = 2
+	aoe_radius = 2
 
 	sparkle_path = /obj/effect/temp_visual/dir_setting/tailsweep
 

@@ -13,11 +13,11 @@
 	invocation_type = INVOCATION_NONE
 	spell_requirements = NONE
 
-	range = 2
+	aoe_radius = 2
 
 /datum/action/cooldown/spell/aoe/area_conversion/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/turf/nearby_turf in range(range, center))
+	for(var/turf/nearby_turf in range(aoe_radius, center))
 		things += nearby_turf
 
 	return things

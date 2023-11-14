@@ -11,14 +11,14 @@
 	invocation_type = INVOCATION_SHOUT
 	spell_requirements = SPELL_REQUIRES_NO_ANTIMAGIC
 
-	range = 6
+	aoe_radius = 6
 
 	/// The amount of firestacks to put people afflicted.
 	var/firestacks_to_give = 20
 
 /datum/action/cooldown/spell/aoe/sacred_flame/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/mob/living/nearby_mob in view(range, center))
+	for(var/mob/living/nearby_mob in view(aoe_radius, center))
 		things += nearby_mob
 
 	return things

@@ -11,14 +11,14 @@
 	invocation = "FORTI GY AMA"
 	invocation_type = INVOCATION_SHOUT
 
-	range = 7
+	aoe_radius = 7
 
 	/// The projectile type fired at all people around us
 	var/obj/projectile/projectile_type = /obj/projectile/magic/aoe/magic_missile
 
 /datum/action/cooldown/spell/aoe/magic_missile/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/mob/living/nearby_mob in view(range, center))
+	for(var/mob/living/nearby_mob in view(aoe_radius, center))
 		if(nearby_mob == owner || nearby_mob == center)
 			continue
 

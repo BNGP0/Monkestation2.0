@@ -12,7 +12,7 @@
 	invocation = "GIN'YU CAPAN"
 	invocation_type = INVOCATION_WHISPER
 
-	range = 3
+	aoe_radius = 3
 
 	/// If TRUE, we cannot mindswap into mobs with minds if they do not currently have a key / player.
 	var/target_requires_key = TRUE
@@ -52,7 +52,7 @@
 
 /datum/action/cooldown/spell/aoe/mind_swap/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/mob/living/nearby_mob in range(range, get_turf(center)))
+	for(var/mob/living/nearby_mob in range(aoe_radius, get_turf(center)))
 		if(is_type_in_typecache(nearby_mob, blacklisted_mobs) || (nearby_mob.stat == DEAD))
 			continue
 		if(!nearby_mob.mind && target_requires_mind)
@@ -127,5 +127,5 @@
 /datum/action/cooldown/spell/aoe/mind_swap/badmin
 	name = "Greater Mind Swap"
 	desc = "This spell will randomly swap the minds of everyone around you in a huge area, yourself included."
-	range = 12
+	aoe_radius = 12
 	cooldown_time = 30 SECONDS

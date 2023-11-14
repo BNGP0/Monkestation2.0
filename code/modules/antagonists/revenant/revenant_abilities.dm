@@ -182,7 +182,7 @@
 
 /datum/action/cooldown/spell/aoe/revenant/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/turf/nearby_turf in range(range, center))
+	for(var/turf/nearby_turf in range(aoe_radius, center))
 		things += nearby_turf
 
 	return things
@@ -223,7 +223,7 @@
 	button_icon_state = "overload_lights"
 	cooldown_time = 20 SECONDS
 
-	range = 5
+	aoe_radius = 5
 	unlock_amount = 25
 	cast_amount = 40
 	stun_duration = 3 SECONDS
@@ -264,7 +264,7 @@
 	button_icon_state = "defile"
 	cooldown_time = 15 SECONDS
 
-	range = 4
+	aoe_radius = 4
 	unlock_amount = 10
 	cast_amount = 30
 	reveal_duration = 4 SECONDS
@@ -314,7 +314,7 @@
 	button_icon_state = "malfunction"
 	cooldown_time = 20 SECONDS
 
-	range = 4
+	aoe_radius = 4
 	cast_amount = 60
 	unlock_amount = 125
 
@@ -356,7 +356,7 @@
 	button_icon_state = "blight"
 	cooldown_time = 20 SECONDS
 
-	range = 3
+	aoe_radius = 3
 	cast_amount = 50
 	unlock_amount = 75
 
@@ -405,7 +405,7 @@
 		Items closer to you are more likely to be haunted."
 	button_icon_state = "r_haunt"
 	max_targets = 7
-	range = 5
+	aoe_radius = 5
 
 	unlock_amount = 30 // Similar to overload lights
 	cast_amount = 50 // but has a longer lasting effect
@@ -414,7 +414,7 @@
 
 /datum/action/cooldown/spell/aoe/revenant/haunt_object/get_things_to_cast_on(atom/center)
 	var/list/things = list()
-	for(var/obj/item/nearby_item in range(range, center))
+	for(var/obj/item/nearby_item in range(aoe_radius, center))
 		// Don't throw around anchored things or dense things
 		// (Or things not on a turf but I am not sure if range can catch that)
 		if(nearby_item.anchored || nearby_item.density || !isturf(nearby_item.loc))
@@ -444,7 +444,7 @@
 	victim.AddComponent(/datum/component/haunted_item, \
 		haunt_color = "#823abb", \
 		haunt_duration = rand(1 MINUTES, 3 MINUTES), \
-		aggro_radius = range - 1, \
+		aggro_radius = aoe_radius - 1, \
 		spawn_message = span_revenwarning("[victim] begins to float and twirl into the air as it glows a ghastly purple!"), \
 		despawn_message = span_revenwarning("[victim] falls back to the ground, stationary once more."), \
 	)
