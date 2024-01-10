@@ -191,7 +191,7 @@
 	affected_mob.AdjustUnconscious(-40 * REM * seconds_per_tick)
 	affected_mob.AdjustParalyzed(-40 * REM * seconds_per_tick)
 	affected_mob.AdjustImmobilized(-40 * REM * seconds_per_tick)
-	affected_mob.stamina.adjust(2 * REM * seconds_per_tick, FALSE)
+	affected_mob.stamina.adjust(2 * REM * seconds_per_tick, TRUE)
 	affected_mob.set_jitter_if_lower(4 SECONDS * REM * seconds_per_tick)
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, rand(1, 4) * REM * seconds_per_tick, required_organtype = affected_organtype)
 	if(SPT_PROB(2.5, seconds_per_tick))
@@ -244,7 +244,7 @@
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice("[high_message]"))
 	affected_mob.add_mood_event("salted", /datum/mood_event/stimulant_heavy, name)
-	affected_mob.stamina.adjust(5 * REM * seconds_per_tick, FALSE)
+	affected_mob.stamina.adjust(5 * REM * seconds_per_tick, TRUE)
 	affected_mob.adjustOrganLoss(ORGAN_SLOT_BRAIN, 4 * REM * seconds_per_tick, required_organtype = affected_organtype)
 	affected_mob.adjust_hallucinations(10 SECONDS * REM * seconds_per_tick)
 	if(!HAS_TRAIT(affected_mob, TRAIT_IMMOBILIZED) && !ismovable(affected_mob.loc))
@@ -276,7 +276,7 @@
 	var/high_message = pick("You feel amped up.", "You feel ready.", "You feel like you can push it to the limit.")
 	if(SPT_PROB(2.5, seconds_per_tick))
 		to_chat(affected_mob, span_notice("[high_message]"))
-	affected_mob.stamina.adjust(18 * REM * seconds_per_tick, FALSE)
+	affected_mob.stamina.adjust(18 * REM * seconds_per_tick, TRUE)
 	affected_mob.adjustToxLoss(0.5 * REM * seconds_per_tick, FALSE, required_biotype = affected_biotype)
 	if(SPT_PROB(30, seconds_per_tick))
 		affected_mob.losebreath++
@@ -712,12 +712,6 @@
 		animate(color = col_filter_half, time = 24 SECONDS, easing = CIRCULAR_EASING|EASE_IN)
 		animate(color = col_filter_twothird, time = 12 SECONDS, easing = LINEAR_EASING)
 
-	game_plane_master_controller.add_filter("saturnx_blur", 1, list("type" = "radial_blur", "size" = 0))
-
-	for(var/filter in game_plane_master_controller.get_filters("saturnx_blur"))
-		animate(filter, loop = -1, size = 0.04, time = 2 SECONDS, easing = ELASTIC_EASING|EASE_OUT, flags = ANIMATION_PARALLEL)
-		animate(size = 0, time = 6 SECONDS, easing = CIRCULAR_EASING|EASE_IN)
-
 ///This proc turns the living mob passed as the arg "invisible_man"s invisible by giving him the invisible man trait and updating his body, this changes the sprite of all his organic limbs to a 1 alpha version.
 /datum/reagent/drug/saturnx/proc/turn_man_invisible(mob/living/carbon/invisible_man, requires_liver = TRUE)
 	if(requires_liver)
@@ -760,7 +754,6 @@
 
 	var/atom/movable/plane_master_controller/game_plane_master_controller = invisible_man.hud_used.plane_master_controllers[PLANE_MASTERS_GAME]
 	game_plane_master_controller.remove_filter("saturnx_filter")
-	game_plane_master_controller.remove_filter("saturnx_blur")
 
 /datum/reagent/drug/saturnx/overdose_process(mob/living/invisible_man, seconds_per_tick, times_fired)
 	. = ..()
@@ -804,7 +797,7 @@
 	if(!iscarbon(kronkaine_receptacle))
 		return
 	var/mob/living/carbon/druggo = kronkaine_receptacle
-	druggo.stamina.adjust(4 * trans_volume, 0)
+	druggo.stamina.adjust(4 * trans_volume, TRUE)
 	//I wish i could give it some kind of bonus when smoked, but we don't have an INHALE method.
 
 /datum/reagent/drug/kronkaine/on_mob_life(mob/living/carbon/kronkaine_fiend, seconds_per_tick, times_fired)
@@ -818,7 +811,7 @@
 		return
 	for(var/possible_purger in kronkaine_fiend.reagents.reagent_list)
 		if(istype(possible_purger, /datum/reagent/medicine/c2/multiver) || istype(possible_purger, /datum/reagent/medicine/haloperidol))
-			kronkaine_fiend.ForceContractDisease(new /datum/disease/adrenal_crisis(), FALSE, TRUE) //We punish players for purging, since unchecked purging would allow players to reap the stamina healing benefits without any drawbacks. This also has the benefit of making haloperidol a counter, like it is supposed to be.
+			kronkaine_fiend.infect_disease_predefined(DISEASE_TRAUMA, TRUE, "[ROUND_TIME()] Infected From Krokaine")
 			break
 
 /datum/reagent/drug/kronkaine/overdose_process(mob/living/kronkaine_fiend, seconds_per_tick, times_fired)

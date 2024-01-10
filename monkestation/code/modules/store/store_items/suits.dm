@@ -186,6 +186,7 @@ GLOBAL_LIST_INIT(store_suits, generate_store_items(/datum/store_item/suit))
 	name = "Carp Costume"
 	item_path = /obj/item/clothing/suit/hooded/carp_costume
 
+
 /datum/store_item/suit/wizard
 	name = "Wizard Robe"
 	item_path = /obj/item/clothing/suit/wizrobe/fake
@@ -194,6 +195,11 @@ GLOBAL_LIST_INIT(store_suits, generate_store_items(/datum/store_item/suit))
 	name = "Witch Robe"
 	item_path = /obj/item/clothing/suit/wizrobe/marisa/fake
 	item_cost = 2000
+
+/datum/store_item/suit/dinojammies
+	name = "Dinosaur Pajamas"
+	item_path = /obj/item/clothing/suit/hooded/dinojammies
+	item_cost = 10000
 
 /*
 *	MISC

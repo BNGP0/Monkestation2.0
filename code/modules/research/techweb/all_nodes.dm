@@ -46,10 +46,10 @@
 		"earmuffs",
 		"electropack",
 		"experi_scanner",
-		"experimentor",
 		"extinguisher",
 		"fax",
 		"fishing_rod",
+		"fishing_portal_generator",
 		"flashlight",
 		"fluid_ducts",
 		"foam_dart",
@@ -119,6 +119,7 @@
 		"titaniumglass",
 		"toner_large",
 		"toner",
+		"tongs",
 		"toy_armblade",
 		"toy_balloon",
 		"toygun",
@@ -296,6 +297,7 @@
 		"swab",
 		"syringe",
 		"xlarge_beaker",
+		"vial",
 	)
 
 /datum/techweb_node/basic_circuitry
@@ -376,7 +378,14 @@
 		"component_printer",
 		"integrated_circuit",
 		"module_duplicator",
-		"usb_cable"
+		"usb_cable",
+		"chemical_synthesizer",
+		"weighted_splitter",
+		"chemical_splitter",
+		"chemical_mixer",
+		"chemical_filter",
+		"chemical_injector_bci",
+		"internal_chemical_tank",
 	)
 
 /////////////////////////Biotech/////////////////////////
@@ -398,13 +407,18 @@
 		"defibrillator",
 		"genescanner",
 		"healthanalyzer",
+		"antibodyscanner",
 		"med_spray_bottle",
 		"medical_kiosk",
 		"medigel",
 		"medipen_refiller",
-		"pandemic",
 		"soda_dispenser",
 		"extrapolator",
+		"diseasesplicer",
+		"incubator",
+		"diseaseanalyzer",
+		"centrifuge",
+		"path_data",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 	discount_experiments = list(/datum/experiment/dissection/human = 1000)
@@ -641,6 +655,8 @@
 	design_ids = list(
 		"anomaly_neutralizer",
 		"reactive_armour",
+		"artifact_heater",
+		"artifact_xray",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
 
@@ -1454,6 +1470,32 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
 	discount_experiments = list(/datum/experiment/scanning/random/plants/traits = 2000,
 								/datum/experiment/scanning/random/plants/wild = 2000)
+
+/datum/techweb_node/fishing
+	id = "fishing"
+	display_name = "Fishing Technology"
+	description = "Cutting edge fishing advancements."
+	prereq_ids = list("base")
+	design_ids = list(
+		"fishing_rod_tech",
+		"stabilized_hook",
+		"fish_analyzer",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
+	required_experiments = list(/datum/experiment/scanning/fish)
+
+/datum/techweb_node/fishing
+	id = "fishing"
+	display_name = "Fishing Technology"
+	description = "Cutting edge fishing advancements."
+	prereq_ids = list("base")
+	design_ids = list(
+		"fishing_rod_tech",
+		"stabilized_hook",
+		"fish_analyzer",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
+	required_experiments = list(/datum/experiment/scanning/fish)
 
 /datum/techweb_node/exp_tools
 	id = "exp_tools"
@@ -2319,6 +2361,3 @@
 		"stabilized_hook",
 		"fish_analyzer",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-	hidden = TRUE
-	experimental = TRUE

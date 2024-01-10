@@ -30,6 +30,14 @@
 	chambered = new /obj/item/ammo_casing/syringegun(src)
 	recharge_newshot()
 
+/obj/item/gun/syringe/apply_fantasy_bonuses(bonus)
+	. = ..()
+	max_syringes = modify_fantasy_variable("max_syringes", max_syringes, bonus, minimum = 1)
+
+/obj/item/gun/syringe/remove_fantasy_bonuses(bonus)
+	max_syringes = reset_fantasy_variable("max_syringes", max_syringes)
+	return ..()
+
 /obj/item/gun/syringe/handle_atom_del(atom/A)
 	. = ..()
 	if(A in syringes)
@@ -43,7 +51,7 @@
 /obj/item/gun/syringe/can_shoot()
 	return syringes.len
 
-/obj/item/gun/syringe/handle_chamber()
+/obj/item/gun/syringe/handle_chamber(mob/living/user, empty_chamber = TRUE, from_firing = TRUE, chamber_next_round = TRUE)
 	if(chambered && !chambered.loaded_projectile) //we just fired
 		recharge_newshot()
 	update_appearance()

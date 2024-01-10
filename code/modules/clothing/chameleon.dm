@@ -39,7 +39,7 @@
 	// No point making the code more complicated if no non-drone
 	// is ever going to use one of these
 
-	var/mob/living/simple_animal/drone/D
+	var/mob/living/basic/drone/D
 
 	if(isdrone(owner))
 		D = owner
@@ -607,6 +607,7 @@
 	flags_inv = HIDEEARS|HIDEEYES|HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	flags_cover = MASKCOVERSEYES | MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
+	supports_variations_flags = CLOTHING_SNOUTED_VARIATION
 
 	var/voice_change = 1 ///This determines if the voice changer is on or off.
 
@@ -902,7 +903,7 @@
 	chameleon_action = new(src)
 	chameleon_action.chameleon_type = /obj/item/gun
 	chameleon_action.chameleon_name = "Gun"
-	chameleon_action.chameleon_blacklist = typecacheof(/obj/item/gun/energy/minigun)
+	chameleon_action.chameleon_blacklist = typecacheof(list(/obj/item/gun/energy/minigun, /obj/item/gun/energy/recharge/kinetic_accelerator/meme), only_root_path = TRUE) //MONKESTATION EDIT - no, i dont trust people even with it as a chameleon appearance. admins dont want no bwoinkerino.
 	chameleon_action.initialize_disguises()
 	add_item_action(chameleon_action)
 
